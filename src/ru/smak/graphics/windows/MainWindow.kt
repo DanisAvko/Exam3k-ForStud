@@ -50,13 +50,13 @@ class MainWindow : JFrame("Экзамен: КТ, 3 курс") {
         mainPanel.addPainter(cartesianP)
         val gridP = GridPainter(plane)
         mainPanel.addPainter(gridP, 0)
-        val funk = { x:Double -> 2 * x / (1 - x * x) }
-        val x = {t:Double -> cos(t)*cos(t)+2*cos(t)}
-        val y = {t:Double -> sin(t)*cos(t)+2*sin(t)}
-        val funcp = FunctionPainter(plane,funk)
-        val funct = ParamFunctionPainter(plane,x,y,-10.0,10.0)
-        mainPanel.addPainter(funct,0)
-        mainPanel.addPainter(funcp,0)
+        val funk = { x: Double -> 2 * x / (1 - x * x) }
+        val x = { t: Double -> cos(t) * cos(t) + 2 * cos(t) }
+        val y = { t: Double -> sin(t) * cos(t) + 2 * sin(t) }
+        val funcp = FunctionPainter(plane, null, funk)
+        val funct = FunctionPainter(plane, x, y)
+        mainPanel.addPainter(funct, 0)
+        mainPanel.addPainter(funcp, 0)
         /**
          * Добавление указателя в позицию мыши
          */

@@ -1,5 +1,6 @@
 package ru.smak.graphics.components
 
+import ru.avk.graphics.painting.FunctionPainter
 import ru.smak.graphics.convertation.ScreenPlane
 import ru.smak.graphics.painting.APainter
 import java.awt.Color
@@ -28,8 +29,11 @@ class GraphicsPanel : JPanel(), MouseListener, MouseMotionListener {
 
     inner class BackgroundProcess : SwingWorker<Unit, Unit>() {
         override fun doInBackground() {
-            paintersCollection[0].paint(this@GraphicsPanel.graphics)
-            paintersCollection[1].paint(this@GraphicsPanel.graphics)
+            paintersCollection.forEach {
+                if (it is FunctionPainter) {
+                    it.paint(this@GraphicsPanel.graphics)
+                }
+            }
         }
 
     }
@@ -77,7 +81,7 @@ class GraphicsPanel : JPanel(), MouseListener, MouseMotionListener {
         synchronized(paintersCollection) {
             paintersCollection.forEach { p ->
                 g2?.let {
-                    if (paintersCollection.indexOf(p) != 0&&paintersCollection.indexOf(p) != 1) {
+                    if (p !is FunctionPainter) {
                         p.paint(g2)
                     }
                 }

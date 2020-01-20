@@ -12,5 +12,6 @@
     <orderEntry type="module" module-name="CartesianPainter" />
     <orderEntry type="module" module-name="Converter" />
     <orderEntry type="module" module-name="Pointer" />
+    <orderEntry type="module" module-name="FunctionPainter" />
   </component>
 </module>
