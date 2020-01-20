@@ -14,7 +14,7 @@ class FunctionPainter (override val plane: CartesianScreenPlane,val f:(Double)->
     }
     fun PaintFucntion(g:Graphics){
         for (i in 0..plane.realWidth) {
-            g.color = Color.black
+            g.color = Color.RED
             val y1 = Converter.yCrt2Scr(f(Converter.xScr2Crt(i, plane)),plane)
             val y2 = Converter.yCrt2Scr(f(Converter.xScr2Crt(i+1, plane)),plane)
             g.drawLine(i,y1,i+1,y2)
