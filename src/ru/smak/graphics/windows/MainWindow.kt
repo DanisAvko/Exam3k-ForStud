@@ -1,5 +1,6 @@
 package ru.smak.graphics.windows
 
+import ru.avk.graphics.painting.FunctionPainter
 import ru.smak.graphics.components.GraphicsPanel
 import ru.smak.graphics.convertation.CartesianScreenPlane
 import ru.smak.graphics.painting.CartesianPainter
@@ -46,6 +47,9 @@ class MainWindow : JFrame("Экзамен: КТ, 3 курс") {
         mainPanel.addPainter(cartesianP)
         val gridP = GridPainter(plane)
         mainPanel.addPainter(gridP, 0)
+        val funk = { x:Double -> 2 * x / (1 - x * x) }
+        val funcp = FunctionPainter(plane,funk)
+        mainPanel.addPainter(funcp,0)
         /**
          * Добавление указателя в позицию мыши
          */
